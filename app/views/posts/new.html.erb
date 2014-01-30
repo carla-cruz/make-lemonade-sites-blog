@@ -1,7 +1,7 @@
  <%= form_for [@post] do |f| %>
- <%= f.label :title %>
- <%= f.text_field :title %>
+ <%= f.label :title %><br>
+ <%= f.text_field :title, :style => "width: 1170px"  %><br><br>
  <%= f.label :body %>
- <%= f.text_field :body %>
+ <%= f.text_field :body, :style => "width: 1170px; height: 300px" %><br><br>
  <%= f.submit "Add Post" %>
  <% end %>
