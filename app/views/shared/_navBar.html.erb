@@ -2,9 +2,13 @@
 	<ul class="nav nav-pills pull-right">
 		<li class="active"><%= link_to 'Home', root_path %></li>
 		<li><%= link_to 'Create', new_post_path %></li>
-		<li><%= link_to 'Blog', blog_admin_path %></li>
-		<li><%= link_to 'Sign-In',  new_user_session_path %></li>
-		<li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
-	</ul>
-	<%= link_to image_tag("/assets/site/logo_icon_yellow.png"), root_path  %>
+		<li><%= link_to 'Admin', blog_admin_path %></li>
+    <% unless user_signed_in? %>
+      <li><%= link_to 'Sign-In',  new_user_session_path %></li>
+    <% end %>
+    <% if user_signed_in? %>
+      <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+    <% end %>
+  </ul>
+  <%= link_to image_tag("/assets/site/logo_icon_yellow.png"), root_path  %>
 </div>
