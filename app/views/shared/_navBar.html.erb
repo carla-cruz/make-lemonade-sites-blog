@@ -1,9 +1,10 @@
 <div class="header">
 	<ul class="nav nav-pills pull-right">
 		<li class="active"><%= link_to 'Home', root_path %></li>
-		<li><%= link_to 'Create', root_path %></li>
-		<li><%= link_to 'Edit', root_path %></li>
-		<li><%= link_to "Delete", root_path %></li>
+		<li><%= link_to 'Create', new_post_path %></li>
+		<li><%= link_to 'Blog', blog_admin_path %></li>
+		<li><%= link_to 'Sign-In',  new_user_session_path %></li>
+		<li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
 	</ul>
 	<%= link_to image_tag("/assets/site/logo_icon_yellow.png"), root_path  %>
 </div>
