@@ -1,9 +1,9 @@
 MakeLemonadeSitesBlog::Application.routes.draw do
   
 devise_for :users
-resources :posts do 
-  resources :categories, except: [:index, :show, :edit]
-end
+resources :posts 
+
+resources :categories, except: [:show, :edit]
 get '/blog_admin' => 'static_pages#blog_admin', :as => :blog_admin
 
 root :to => "posts#index" 
