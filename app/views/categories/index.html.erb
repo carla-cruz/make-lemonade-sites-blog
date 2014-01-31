@@ -1,3 +1,4 @@
+<div class="innerContainer"> 
 <%= form_for [@category] do |f| %>
  <%= f.label :name %><br>
  <%= f.text_field :name %>
@@ -10,3 +11,4 @@
 <%= link_to "Delete", category_path(cat), method: :delete %><br>
 
 <% end %>
+</div>
