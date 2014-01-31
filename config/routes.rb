@@ -5,6 +5,8 @@ resources :posts
 
 resources :categories, except: [:show, :edit]
 get '/blog_admin' => 'static_pages#blog_admin', :as => :blog_admin
+get '/about' => 'static_pages#about', :as => :about
+get '/archives' => 'static_pages#archives', :as => :archives
 
 root :to => "posts#index" 
   # The priority is based upon order of creation: first created -> highest priority.

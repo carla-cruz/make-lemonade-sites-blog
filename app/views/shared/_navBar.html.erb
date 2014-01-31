@@ -1,18 +1,54 @@
-<div class="header">
-	<ul class="nav nav-pills pull-right">
-		<li class="active"><%= link_to 'Home', root_path %></li>
-    <% if user_signed_in? && administrator?(current_user) %>
-    <li><%= link_to 'Create', new_post_path %></li>
-    <li><%= link_to 'Admin', blog_admin_path %></li>
-    <li><%= link_to 'Create / View Categories',  categories_path %></li>
-    <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
-    <% unless user_signed_in?  %>
-    <li><%= link_to 'Sign-In',  new_user_session_path %></li>
-    <% end %>
-    <% end %>
-    
+<div class="navbar navbar-inverse navbar-fixed-top navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'Home', root_path, class: cp(root_path) %></li>
+        <li><%= link_to 'About', about_path, class: cp(about_path) %></li>
+        <li><%= link_to 'Archives', archives_path, class: cp(about_path) %></li>
+        <% if user_signed_in? && administrator?(current_user) %>
+        <li><%= link_to 'Create', new_post_path, class: cp(new_post_path) %></li>
+        <li><%= link_to 'Admin', blog_admin_path, class: cp(blog_admin_path) %></li>
+        <li><%= link_to 'Categories',  categories_path, class: cp(categories_path) %></li>
+        <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete, class: cp(destroy_user_session_path) %></li>
+        <% end %>
 
-
-  </ul>
-  <%= link_to image_tag("/assets/site/logo_icon_yellow.png"), root_path  %>
+      </ul>
+    </div><!--/.navbar-collapse -->
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  if ((window.location.href).match(/home/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(2)').addClass('active');
+  } else if ((window.location.href).match(/about/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(2)').addClass('active');
+  } else if ((window.location.href).match(/archives/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(4)').addClass('active');
+  } else if ((window.location.href).match(/create/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(5)').addClass('active');
+  } else if ((window.location.href).match(/admin/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(6)').addClass('active');
+  } else if ((window.location.href).match(/categoies/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(7)').addClass('active');
+  } else if ((window.location.href).match(/logout/)) {
+    $('li.main').removeClass('active');
+    $('li.main:nth-of-type(7)').addClass('active');
+  } 
+
+});
+</script>
