@@ -16,7 +16,9 @@ class PostsController < ApplicationController
 	def create
 		p params
 		p "*" * 100
-		@post = Post.create(title:params[:post][:title], body:params[:post][:body])
+		p current_user.email
+		p "*" * 100
+		@post = Post.create(title:params[:post][:title], body:params[:post][:body], user_id:current_user.id)
 		if @post.save
 			redirect_to @post
 		else
