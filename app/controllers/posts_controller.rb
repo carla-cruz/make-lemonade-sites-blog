@@ -15,7 +15,8 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.create(title:params[:post][:title], body:params[:post][:body], user_id:current_user.id)
+		@post = Post.create(title:params[:post][:title], body:params[:post][:body])
+		current_user.posts << @post
 		
 		if @post.save
 			@post.add_categories(params[:post][:category_ids])
