@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	http_basic_authenticate_with :name => "lemonadeBlog", :password => "weRockEvenMore"
+	http_basic_authenticate_with :name => "blog", :password => "hello"
 	
 	def index
 		@posts= Post.all
@@ -15,17 +15,10 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		p params
-		p "*" * 100
-		p current_user.email
-		p "*" * 100
 		@post = Post.create(title:params[:post][:title], body:params[:post][:body], user_id:current_user.id)
 		
 		if @post.save
-			params[:post][:category_ids].each do |cat|
-				
-				@post.categories << Category.find(cat.to_i)
-			end
+			@post.add_categories(params[:post][:category_ids])
 			redirect_to @post
 		else
 			redirect_to root_path
@@ -39,11 +32,14 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		@post.update_attributes(title:params[:post][:title], body:params[:post][:body])
-				if @post.save
+		@post.categories.clear
+		if @post.save
+			@post.add_categories(params[:post][:category_ids])
 			redirect_to @post
 		else
-			redirect_to root_path
+			redirect_to edit_post_path(@post)
 		end
+	
 	end
 
 	def destroy
