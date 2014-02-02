@@ -3,10 +3,12 @@ class PostsController < ApplicationController
 	
 	def index
 		@posts= Post.all
+		@comment = Comment.new
 	end
 
 	def show
 		@post = Post.find(params[:id])
+		@comments = Comment.all
 	end
 
 	def new
@@ -40,7 +42,6 @@ class PostsController < ApplicationController
 		else
 			redirect_to edit_post_path(@post)
 		end
-	
 	end
 
 	def destroy
@@ -48,7 +49,4 @@ class PostsController < ApplicationController
 	@post.destroy
 	redirect_to blog_admin_path
 	end
-
-
-
 end

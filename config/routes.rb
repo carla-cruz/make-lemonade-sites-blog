@@ -1,7 +1,9 @@
 MakeLemonadeSitesBlog::Application.routes.draw do
   
 devise_for :users
-resources :posts 
+resources :posts do 
+  resources :comments, only: [:create]
+end
 
 resources :categories, except: [:show, :edit]
 get '/blog_admin' => 'static_pages#blog_admin', :as => :blog_admin

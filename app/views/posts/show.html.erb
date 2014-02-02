@@ -1,6 +1,16 @@
 <div class="innerContainer"> 
 <h3><%= @post.title  %></h3>	
 <p><%= @post.body %></p>
+
+<% if @post.comments.length > 0 %>
+  <%= @post.comments.each do |comment| %>
+  <%= comment.body %>
+  <% end %>
+  <% end %>
+
+  <% @comments.each do |c| %>
+  <%= c.body %>
+  <% end %>
+  
 </div>
 
-<%= User.find(1).posts.first.title %>
