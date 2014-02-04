@@ -1,14 +1,12 @@
 <div class="innerContainer"> 
-<%= form_for [@category] do |f| %>
- <%= f.label :name %><br>
- <%= f.text_field :name %>
- 
- <%= f.submit "Add Category" %>
- <% end %>
+<%= link_to "Add a Category", new_category_path, id: "new_category_link", remote: true %>
+<br><br>
 
+<ul id="category_list">
 <% @categories.each do |cat| %>
-<%= cat.name %>
-<%= link_to "Delete", category_path(cat), method: :delete %><br>
+<li><%= cat.name %>
+<%= link_to "Delete", category_path(cat), method: :delete %></li>
 
 <% end %>
+</ul>
 </div>

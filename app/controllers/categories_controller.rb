@@ -1,13 +1,23 @@
 class CategoriesController < ApplicationController
+  respond_to :html, :js
 
 def index
   @category = Category.new
   @categories = Category.all
 end
 
+def new
+  @category = Category.new
+end
+
+
+
 def create
-  category = Category.find_or_create_by_name(params[:category][:name])
-  redirect_to categories_path
+  @category = Category.create!(category_params)
+  respond_to do |format|
+    format.html { redirect_to categories_path }
+    format.js
+  end
 end
 
 def destroy
@@ -15,5 +25,11 @@ def destroy
   category.destroy
   redirect_to categories_path
 end
+
+private
+
+  def category_params
+    params.require(:category).permit(:name)
+  end
 
 end

@@ -2,7 +2,7 @@ MakeLemonadeSitesBlog::Application.routes.draw do
   
 devise_for :users
 resources :posts do 
-  resources :comments, only: [:create]
+  resources :comments, only: [:new, :create]
 end
 
 resources :categories, except: [:show, :edit]

@@ -1,0 +1,6 @@
+<%= form_for @category, :html => {:id => "new_category"} do |f| %>
+ <%= f.label :name %><br>
+ <%= f.text_field :name %>
+ 
+ <%= f.submit "Add Category" %>
+ <% end %>
