@@ -3,14 +3,10 @@
 <p><%= @post.body %></p>
 
 <% if @post.comments.length > 0 %>
-  <%= @post.comments.each do |comment| %>
+  <% @post.comments.each do |comment| %>
   <%= comment.body %>
+  <br>
   <% end %>
   <% end %>
-
-  <% @comments.each do |c| %>
-  <%= c.body %>
-  <% end %>
-  
 </div>
 

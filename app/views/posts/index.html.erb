@@ -1,17 +1,18 @@
 <div class="innerContainer"> 
   <% @posts.each do |post| %>
-    <h3><%= post.title  %></h3>	
+    <h3><%= link_to post.title, post_path(post)  %></h3>	
     <p><%= post.body %></p>
 
-    <%= form_for [post, @comment] do |f| %> 
+    <%= form_for [post, @comment], :html => { :class => "comment_form"} do |f| %> 
         <%= f.label :comment %>  
         <%= f.text_area :body %>  
       <%= f.submit "Add comment" %>  
-    <% end %>
+  <% end %>
 
     <% if post.comments.length > 0 %>
       <% post.comments.each do |comment| %>
         <%= comment.body %>
+        <br>
       <% end %>
     <% end %>
 

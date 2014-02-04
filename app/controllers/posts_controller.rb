@@ -49,4 +49,10 @@ class PostsController < ApplicationController
 	@post.destroy
 	redirect_to blog_admin_path
 	end
+
+	private
+
+  # def user_params
+  #   params.require(:post).permit()
+  # end
 end
