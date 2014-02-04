@@ -21,9 +21,12 @@ def create
 end
 
 def destroy
-  category = Category.find(params[:id])
-  category.destroy
-  redirect_to categories_path
+  @category = Category.destroy(params[:id])
+
+  respond_to do |format|
+    format.html { redirect_to categories_path }
+    format.js
+  end
 end
 
 private

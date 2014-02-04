@@ -5,7 +5,7 @@
 <ul id="category_list">
 <% @categories.each do |cat| %>
 <li><%= cat.name %>
-<%= link_to "Delete", category_path(cat), method: :delete %></li>
+<%= link_to "Delete", cat, method: :delete %></li>
 
 <% end %>
 </ul>
