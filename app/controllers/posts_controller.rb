@@ -2,8 +2,13 @@ class PostsController < ApplicationController
 	http_basic_authenticate_with :name => "blog", :password => "hello"
 	
 	def index
-		@posts= Post.all
-		@comment = Comment.new
+		@posts = Post.all
+
+		respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+      format.atom
+    end
 	end
 
 	def show

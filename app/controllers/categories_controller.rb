@@ -10,8 +10,6 @@ def new
   @category = Category.new
 end
 
-
-
 def create
   @category = Category.create!(category_params)
   respond_to do |format|

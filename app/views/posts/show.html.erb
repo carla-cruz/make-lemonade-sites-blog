@@ -1,13 +1,15 @@
 <div class="innerContainer"> 
-<h3><%= @post.title  %></h3>	
-<p><%= @post.body %></p>
+  <%= render :partial => @post %>
+  <%= render '/comments/form' %>
 
+<div id="comments">
+ <% if @post.comments.length > 0 %>
+ <% @post.comments.each do |comment| %>
+ <%= comment.body %>
+ <br>
+ <% end %>
+ <% end %>
+</div>
 
-<% if @post.comments.length > 0 %>
-  <% @post.comments.each do |comment| %>
-  <%= comment.body %>
-  <br>
-  <% end %>
-  <% end %>
 </div>
 
