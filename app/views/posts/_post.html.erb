@@ -1,6 +1,3 @@
  <h2><%= link_to_unless_current post.title, post %></h2>
- <ul>
- <li><%= simple_format (truncate(post.body, length: 300)) %><%= link_to 'read more', post_path(post) %>
-</ul>
+ <%= simple_format post.body %>
 
- <p>Read the <%= link_to "#{post.comments.length} comments", post_path(post) %></p>
