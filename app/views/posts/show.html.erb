@@ -28,10 +28,12 @@
     $('#comment_form').hide();
     $('#new_comment_link').on('click', function(e){
       e.preventDefault();
+      $('#comment_body').val("");
       $('#new_comment_link').hide();
       $('#comment_form').slideToggle();
     });
     $('#add_comment_form_button').on('click', function(){
+
       $('#comment_form').slideToggle();
       $('#new_comment_link').show();
     })
