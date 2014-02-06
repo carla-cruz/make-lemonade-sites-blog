@@ -1,11 +1,15 @@
 <div class="innerContainer"> 
   <% @posts.each do |post| %>
-   <h2><%= link_to post.title, post_path(post) %></h2>
- 
- <%= (truncate(post.body, length: 300)) %><%= link_to ' read more', post_path(post) %><br><br>
+  <h2><%= link_to post.title, post_path(post) %></h2>
 
+  <% if post.user.email == 'carla13cruz@gmail.com' %>
+  <img class="img-circle grav_image" src="carla.jpg">
+  <% else %>
+  <img class="img-circle grav_image" src="assets/paulette.jpg">
+  <% end %>
+  <%= (truncate(post.body, length: 300)) %><%= link_to ' read more', post_path(post) %><br><br>
 
-Read the <%= link_to "#{post.comments.length} comments", post_path(post) %>
-<br><br>
- <% end %>
+  Read the <%= link_to "#{post.comments.length} comments", post_path(post) %>
+  <br><br>
+  <% end %>
 </div>
